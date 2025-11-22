@@ -9,6 +9,14 @@ public class runHospital {
         Hospital h = new Hospital();
         int days = 1;
 
+        System.out.println("Enter your password: ");
+        Scanner a = new Scanner(System.in);
+        String password = a.next();
+        if (!password.equals("password") || !password.equals("abc123")) {
+            password = a.next();
+        }
+
+
         while (running) {
 
             int times = 0;
