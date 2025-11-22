@@ -71,6 +71,10 @@ public class Patient {
         return condition;
     }
 
+    public void setCondition(int num) {
+        condition = num;
+    }
+
     public String healthCondition(int condition) {
         if (condition >= 80) {
             return "Good";

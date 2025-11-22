@@ -19,14 +19,16 @@ public class runHospital {
             final int techniciancapacity = 5;
             final int staffcapacity = 10;
 
+            int funds = (int)(Math.random()) * 400000;
+
             switch(choice) {
                 
                 case 1: {
 
-                    System.out.println("Patient Choices:");
-                    System.out.println("1. View All Patients 2. View Best Off Patient 3. View Worst Off Patient 4. Add New Patient With Name 5. Add Random New Patient 6. Discharge Patient");
                     Boolean patientRun = true;
                     while (patientRun) {
+                        System.out.println("Patient Choices:");
+                        System.out.println("1. View All Patients 2. View Best Off Patient 3. View Worst Off Patient 4. Add New Patient With Name 5. Add Random New Patient 6. Discharge Patient 7. Add Number of Random Patients (Limit of 40)") ;
                         int patientChoice = s.nextInt();
                         switch(patientChoice) {
                             case 1: {
@@ -34,11 +36,11 @@ public class runHospital {
                                 break;
                             }
                             case 2: {
-                                h.getBestPatient();
+                                System.out.println("The best-off patient in the hospital is: " + h.getBestPatient());
                                 break;
                             }
                             case 3: {
-                                h.getWorstPatient();
+                                System.out.println("The worst-off patient in the hospital is: " + h.getWorstPatient());
                                 break;
                             }
                             case 4: {
@@ -56,6 +58,10 @@ public class runHospital {
                                 //     }
                                 // }
                                 Patient p = new Patient(firstname,secondname,ailment);
+                                //The hospital can only have 40 patients!!!
+                                if (h.getHospitalBedsTaken() >= patientcapacity) {
+                                    break;
+                                }
                                 h.addPatient(p);
                                 break;
                             }
@@ -66,7 +72,27 @@ public class runHospital {
                                 break;
                             }
                             case 6:
+                                h.getAllPatientNamesandHealths();
+                                System.out.println("What patient would you like to discharge? ");
                                 break;
+                            case 7:
+                                System.out.println("Enter the number of patients you want to administer: ");
+                                try {
+                                    int number = s.nextInt();
+                                    if (h.getHospitalBedsTaken() + number > 40) {
+                                        number = patientcapacity - h.getHospitalBedsTaken();
+                                    }
+                                    for (int i = 0; i < number; ++i) {
+                                        createRandomPatient c = new createRandomPatient();
+                                        Patient p = c.createPatient();
+                                        h.addPatient(p);
+                                    }
+                                    break;
+                                }
+                                catch (Exception e) {
+                                    System.out.println("There was an issue with the input.");
+                                    break;
+                                }
 
                         }
                         System.out.println("Do you want to run it again? Enter True if you do, anything else if you do not ");
@@ -87,9 +113,19 @@ public class runHospital {
                                 break;
                             }
                             case 2: {
+                                System.out.println("Enter firstname");
+                                String firstname = s.next();
+                                System.out.println("Enter secondname");
+                                String secondname = s.next();
+                                HealthcareTechnician t = new HealthcareTechnician(firstname, secondname);
+                                h.addTechnician(t);
+                            }
+                            case 3: {
 
                             }
                         }
+                        System.out.println("Do you want to run it again? Enter True if you do, anything else if you do not ");
+                        technicianRun = s.nextBoolean();
                     }
                     break;
                 }
@@ -114,11 +150,19 @@ public class runHospital {
                                 break;
                             }
                             case 3: {
+                                //Only works with no ailment or Flu because i'm out of time
                                 h.getAllPatientNamesandHealths();
-                                System.out.println("What patient on this list would you like to treat?");
+                                System.out.println("What patient on this list would you like to treat, and using which doctor?");
+                                int number_patient = s.nextInt();
+                                int number_doc = s.nextInt();
+                                Patient p = h.patients.get(number_patient);
+                                HealthcareDoctor d = (HealthcareDoctor) h.workers.get(number_doc);
+                                d.treatPatient(p);
                                 break;
                             }
                         }
+                        System.out.println("Do you want to run it again? Enter True if you do, anything else if you do not ");
+                        doctorRun = s.nextBoolean();
                     }
                     break;
                 }
@@ -130,23 +174,45 @@ public class runHospital {
                         int staffChoice = s.nextInt();
                         switch(staffChoice) {
                             case 1: {
-
+                                h.getTechnicians();
                             }
                             case 2: {
-
+                                System.out.println("Enter firstname");
+                                String firstname = s.next();
+                                System.out.println("Enter secondname");
+                                String secondname = s.next();
+                                HealthcareStaff si = new HealthcareStaff(firstname, secondname);
+                                h.addStaff(si);
+                            }
+                        }
+                        System.out.println("Do you want to run it again? Enter True if you do, anything else if you do not ");
+                        staffrun = s.nextBoolean();
+                    }
+                    break;
+                }
+                case 5: {
+                    System.out.println("Staff Choices: ");
+                    System.out.println("1. View All Facilities 2. Add New Facility (This will cost money) ");
+                    Boolean facilityrun = true;
+                    while (facilityrun) {
+                        int facilitychoice = s.nextInt();
+                        switch(facilitychoice) {
+                            case 1: {
+                                break;
+                            }
+                            case 2: {
+                                break;
                             }
                         }
                     }
-                    break;
                 }
                 default: {
                     System.out.println("Invalid Choice");
                 }
                 
             }
-            System.out.println("Do you want to run it again? Enter True if you do, anything else if you do not ");
+            System.out.println("Do you want to run it again? Enter True if you do, anything else if you do not to leave the program ");
             running = s.nextBoolean();
-            
         }
     }
 }

@@ -9,6 +9,7 @@ public class Hospital {
 
     protected ArrayList<Patient> patients = new ArrayList<>();
     protected ArrayList<Worker> workers = new ArrayList<>();
+    protected ArrayList<Facilities> facilities = new ArrayList<>();
 
     public Hospital() {
 
@@ -110,6 +111,16 @@ public class Hospital {
         System.out.println("Name | Condition");
         for (Patient p : patients) {
             System.out.println(p.getName() + " " + p.getCondition());
+        }
+    }
+
+    public int getHospitalBedsTaken() {
+        return patients.size();
+    }
+
+    public void viewAllFacilities() {
+        for (Facilities f : facilities) {
+            System.out.println(f.toString());
         }
     }
 
