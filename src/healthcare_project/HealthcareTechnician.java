@@ -6,4 +6,8 @@ public class HealthcareTechnician extends Worker {
         this.profession = "Technician";
     }
 
+    public void fixSystem() {
+
+    }
+
 }
