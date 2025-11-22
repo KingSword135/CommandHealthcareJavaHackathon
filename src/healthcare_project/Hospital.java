@@ -48,9 +48,12 @@ public class Hospital {
     }
 
     public void getDoctors() {
+        int count = 1;
+
         for (Worker w : workers) {
             if (w.profession == "Doctor") {
-                System.out.println(w.toString());
+                System.out.println(w.toString() + " " + count);
+                ++count;
             }
         }
     }
@@ -122,6 +125,7 @@ public class Hospital {
         System.out.println("Name | Condition");
         for (Patient p : patients) {
             System.out.println(p.getName() + " " + p.getCondition() + " " + p.getAilment() + " Room Number: " + count);
+            ++count;
         }
     }
 
