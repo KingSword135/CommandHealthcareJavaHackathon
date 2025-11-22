@@ -55,6 +55,16 @@ public class Hospital {
         }
     }
 
+    public int getNumDoctors() {
+        int count = 0;
+        for (Worker w : workers) {
+            if (w.profession == "Doctor") {
+                ++count;
+            }
+        }
+        return count;
+    }
+
     public void getTechnicians() {
         for (Worker w : workers) {
             if (w.profession == "Technician") {
@@ -108,9 +118,10 @@ public class Hospital {
     }
 
     public void getAllPatientNamesandHealths() {
+        int count = 1;
         System.out.println("Name | Condition");
         for (Patient p : patients) {
-            System.out.println(p.getName() + " " + p.getCondition());
+            System.out.println(p.getName() + " " + p.getCondition() + " " + p.getAilment() + " Room Number: " + count);
         }
     }
 
@@ -122,6 +133,13 @@ public class Hospital {
         for (Facilities f : facilities) {
             System.out.println(f.toString());
         }
+    }
+
+    public boolean removeWorker(Worker w) {
+        if (workers.remove(w)) {
+            return true;
+        }
+        return false;
     }
 
 }

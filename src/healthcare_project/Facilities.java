@@ -5,8 +5,9 @@ public class Facilities {
     private String type;
     private int condition;
 
-    public Facilities () {
-
+    public Facilities (String name) {
+        this.type = name;
+        this.condition = 100;
     }
 
     public String getType() {
