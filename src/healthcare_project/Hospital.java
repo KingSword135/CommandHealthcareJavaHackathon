@@ -85,7 +85,10 @@ public class Hospital {
     }
 
     public boolean addPatient(Patient p) {
-        return patients.add(p) ? true : false;
+        if (patients.contains(p)) {
+            return false;
+        }
+        return patients.add(p);
     }
 
     public boolean addDoctor(HealthcareDoctor d) {

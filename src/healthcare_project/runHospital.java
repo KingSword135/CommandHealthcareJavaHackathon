@@ -9,8 +9,6 @@ public class runHospital {
         Hospital h = new Hospital();
         int days = 1;
 
-        System.out.println("Enter your password: ");
-
         while (running) {
 
             int times = 0;
@@ -33,7 +31,7 @@ public class runHospital {
                     Boolean patientRun = true;
                     while (patientRun) {
                         System.out.println("Patient Choices:");
-                        System.out.println("1. View All Patients 2. View Best Off Patient 3. View Worst Off Patient 4. Add New Patient With Name 5. Add Random New Patient 6. Discharge Patient 7. Add Number of Random Patients (Limit of 40)") ;
+                        System.out.println("1. View All Patients 2. View Best Off Patient 3. View Worst Off Patient 4. Add New Patient With Name 5. Add Random New Patient 6. Discharge Patient 7. Add Number of Random Patients (Limit of 40) 8. Search for employee") ;
                         int patientChoice = s.nextInt();
                         switch(patientChoice) {
                             case 1: {
