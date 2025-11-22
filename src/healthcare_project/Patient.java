@@ -13,7 +13,7 @@ public class Patient {
 
         this.name1 = namefirst;
         this.name2 = namesecond;
-        this.patientID = ((int)(Math.random()) * 9999);
+        this.patientID = (int)(Math.random() * 9999);
         this.ailment = ailment;
         this.age = (int)(Math.random() * 99);
         this.condition = ((int)(calculateCondition(ailment) * ageHealthCalculation(age)));
@@ -23,19 +23,19 @@ public class Patient {
     public int calculateCondition(String ailment) {
 
         if (ailment == "None") {
-            return ((int)(Math.random()) * 51) + 50;
+            return (int)(Math.random() * 31) + 70;
         }
         else if (ailment == "Flu") {
-            return ((int)(Math.random()) * 51) + 40;
+            return (int)(Math.random() * 51) + 40;
         }
         else if (ailment == "Cancer") {
-            return ((int)(Math.random()) * 90) + 4;
+            return (int)(Math.random() * 90) + 4;
         }
         else if (ailment == "Diabetes") {
-            return ((int)(Math.random()) * 55) + 25;
+            return (int)(Math.random() * 55) + 25;
         }
         else if (ailment == "Malaria") {
-            return ((int)(Math.random()) * 40) + 10;
+            return (int)(Math.random() * 40) + 10;
         }
         else {
             return -1;
@@ -93,7 +93,7 @@ public class Patient {
     }
 
     public String getName() {
-        return name1 + name2;
+        return name1 + " " + name2;
     }
 
     public String toString() {

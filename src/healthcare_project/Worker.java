@@ -2,7 +2,7 @@ package healthcare_project;
 public class Worker {
     
     protected String profession;
-    private double wage;
+    protected double wage;
     private int daysWorked;
     private int hoursWorked;
     private String firstname;
@@ -21,7 +21,7 @@ public class Worker {
         return wage;
     }
 
-    public int getDaysWorker() {
+    public int getDaysWorked() {
         return daysWorked;
     }
 
@@ -29,22 +29,20 @@ public class Worker {
         return hoursWorked;
     }
 
+    public double getAnnualPay() {
+        return getHoursWorked() * getDaysWorked() * getWage() * 52;
+    }
+
     public int getTotalHoursWorked() {
         return hoursWorked * daysWorked;
     }
 
     public String getName() {
-        return firstname + secondname;
+        return firstname + " " + secondname;
     }
 
     public String getProfession() {
         return profession;
     }
-
-    public String toString() {
-        String msg = "Profession: " + profession;
-        return msg;
-    }
-
 
 }
