@@ -14,7 +14,8 @@ public class HealthcareDoctor extends Worker {
         //Give the patient some medicine if flu or slightly poor health but nothing chronic
         if (p.getAilment() == "Flu" || (p.getAilment() == "None" && p.calculateCondition("None") > 75)) {
             if (Proficiency >= 50) {
-                p.getCondition();
+                int con = p.getCondition();
+                p.setCondition(con + (5 + Proficiency / 25));
             }
             else {
 

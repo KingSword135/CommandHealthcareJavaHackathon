@@ -26,7 +26,7 @@ public class Patient {
             return (int)(Math.random() * 31) + 70;
         }
         else if (ailment == "Flu") {
-            return (int)(Math.random() * 51) + 40;
+            return (int)(Math.random() * 35) + 50;
         }
         else if (ailment == "Cancer") {
             return (int)(Math.random() * 90) + 4;
