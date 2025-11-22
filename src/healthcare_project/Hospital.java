@@ -10,21 +10,17 @@ public class Hospital {
     protected ArrayList<Patient> patients = new ArrayList<>();
     protected ArrayList<Worker> workers = new ArrayList<>();
 
-    public Hospital(int size) {
-        if (size < 0) {
-            this.hospital_size = -1 * size;
-        }
-        else {
-            this.hospital_size = size;
-        }
-        this.Rooms = size / 2;
-
-
-
+    public Hospital() {
 
     }
 
-    public Patient getWorstPatient(ArrayList<Patient> patients) {
+    public void showAllPatients() {
+        for (Patient p : patients) {
+            System.out.println(p.toString());
+        }
+    }
+
+    public Patient getWorstPatient() {
         int worst_condition = 9999;
         Patient worst_off = null;
         for (Patient p : patients) {
@@ -37,18 +33,20 @@ public class Hospital {
         return worst_off;
     }
 
-    public Patient getBestPatient(ArrayList<Patient> patients) {
+    public Patient getBestPatient() {
         int worst_condition = -9999;
-        Patient worst_off = null;
+        Patient best_off = null;
         for (Patient p : patients) {
             int new_worst = p.getCondition();
             if (new_worst > worst_condition) {
                 worst_condition = p.getCondition();
-                worst_off = p;
+                best_off = p;
             }
         }
-        return worst_off;
+        return best_off;
     }
 
-
+    public boolean addPatient(Patient p) {
+        return patients.add(p) ? true : false;
+    }
 }

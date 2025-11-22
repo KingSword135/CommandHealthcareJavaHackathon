@@ -34,6 +34,9 @@ public class Patient {
         else if (ailment == "Diabetes") {
             return ((int)(Math.random()) * 55) + 25;
         }
+        else if (ailment == "Malaria") {
+            return ((int)(Math.random()) * 40) + 10;
+        }
         else {
             return -1;
         }
@@ -68,6 +71,39 @@ public class Patient {
         return condition;
     }
 
-    public String toString();
+    public String healthCondition(int condition) {
+        if (condition >= 80) {
+            return "Good";
+        }
+        else if (condition >= 60 && condition < 80) {
+            return "Fair";
+        }
+        else if (condition >= 40 && condition < 60) {
+            return "Poor";
+        }
+        else if (condition >= 20 && condition < 40) {
+            return "Bad";
+        }
+        else if (condition > 0 && condition < 20) {
+            return "Terrible";
+        }
+        else {
+            return "Dead";
+        }
+    }
+
+    public String getName() {
+        return name1 + name2;
+    }
+
+    public String toString() {
+        String msg = "";
+        msg += "Name: " + getName() + "\n";
+        msg += "ID: " + getPatientID() + "\n";
+        msg += "Age: " + getAge() + "\n";
+        msg += "Ailment: " + getAilment() + "\n";
+        msg += "Health Condition: " + healthCondition(condition) + "\n";
+        return msg;
+    }
 
 }

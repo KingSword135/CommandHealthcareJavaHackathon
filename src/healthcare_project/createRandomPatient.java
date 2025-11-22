@@ -36,23 +36,27 @@ public class createRandomPatient {
 
     public ArrayList<String> ailments = new ArrayList<>() {
         {
-            ailments.add("Nothing");
-            ailments.add("Nothing");
-            ailments.add("Nothing");
-            ailments.add("Nothing");
-            ailments.add("Nothing");
+            ailments.add("None");
+            ailments.add("None");
+            ailments.add("None");
+            ailments.add("None");
+            ailments.add("None");
             ailments.add("Flu");
             ailments.add("Flu");
             ailments.add("Cancer");
             ailments.add("Diabetes");
+            ailments.add("Malaria");
         }
     };
 
     public Patient createPatient() {
         try {
-            String firstname = firstNames.get((int)(Math.random() * 10));
-            String secondname = firstNames.get((int)(Math.random() * 10));
-            String ailment = ailments.get((int)(Math.random() * 9));
+            int pos1 = (int)(Math.random() * firstNames.size());
+            int pos2 = (int)(Math.random() * secondNames.size());
+            int pos3 = (int)(Math.random() * ailments.size());
+            String firstname = firstNames.get(pos1);
+            String secondname = firstNames.get(pos2);
+            String ailment = ailments.get(pos3);
             Patient p = new Patient(firstname, secondname, ailment);
             return p;
         }
